@@ -1,4 +1,9 @@
 # Super Mini Dapp
+
+
+#### Preview Link
+https://super-mini-dapp-demo.vercel.app/
+
 this is a super mini demo for dapp, written entirely in typescript,  
 consist the basic functionality of:
 1. read account
@@ -10,5 +15,6 @@ consist the basic functionality of:
 6. ability to modify nonce (it will be ignored by MetaMask anyway)
 7. switch network between `Ethereum` and `BSC`
 
-## Preview Link
-https://super-mini-dapp-demo.vercel.app/
+#### About Customized Nonce
+customized nonce will be ignored by MetaMask, but it will show at the prompt  
+![prompt](./nonce-snapshot.png)
