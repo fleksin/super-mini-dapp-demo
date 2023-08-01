@@ -102,7 +102,7 @@ export default function Home() {
         throw e;
     }
    
-  }, [account, amount, destAddr, nonceInput]);
+  }, [account, amount, balance, destAddr, nonceInput]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start gap-2 p-24">
