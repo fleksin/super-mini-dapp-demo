@@ -13,8 +13,8 @@ import {
   useAccount,
   useChainId,
   useMetaMaskAvailable,
-} from "./hooks";
-import { TxButton } from "./TxButton";
+} from "../app/hooks";
+import { TxButton } from "../app/TxButton";
 import 'react-toastify/dist/ReactToastify.css';
 import { ethers } from "ethers";
 import { AwesomeButton } from "react-awesome-button";
@@ -27,6 +27,18 @@ declare global {
 }
 
 let toastPendingId = 0;
+
+
+export async function getServerSideProps() {
+  // 在这里获取数据
+  const data = await fetch('https://catfact.ninja/fact').then(res => res.json());
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
 
 
 async function checkTx(hash: string): Promise<boolean> {
@@ -48,10 +60,10 @@ async function checkTx(hash: string): Promise<boolean> {
       }
     }, 1000)
   })
- 
+
 }
 
-export default function Home() {
+export default function Home({ data }) {
   const [destAddr, setDestAddr] = useState("");
   const [nonce, setNonce] = useState("");
   const [balance, setBalance] = useState("");
@@ -61,6 +73,8 @@ export default function Home() {
   const isMetaMaskAvailable = useMetaMaskAvailable();
   const chain = useChainId(account);
   const [txHash, setTxHash] = useState('');
+
+  console.log('data', data)
 
   useEffect(() => {
     if (account) {
@@ -98,14 +112,18 @@ export default function Home() {
     } catch (e: any) {
       if ((e as ethers.ActionRejectedError).code == "ACTION_REJECTED")
         toast.error("user rejected")
-      else 
+      else
         throw e;
     }
-   
+
   }, [account, amount, balance, destAddr, nonceInput]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start gap-2 p-24">
+      <h1>
+        Fun Fact About Cat:
+      </h1>
+      <h4>{data?.fact || 'nothing yet'}</h4>
       <div>Account: {account}</div>
       <div>Current Chain Id: {+chain} &nbsp;
       </div>
