@@ -15,7 +15,6 @@ import {
   useMetaMaskAvailable,
 } from "../app/hooks";
 import { TxButton } from "../app/TxButton";
-// import 'react-toastify/dist/ReactToastify.css';
 import { ethers } from "ethers";
 import { AwesomeButton } from "react-awesome-button";
 
