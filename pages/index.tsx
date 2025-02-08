@@ -1,4 +1,4 @@
-"use client";
+export const runtime = 'experimental-edge';
 
 import { useCallback, useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
