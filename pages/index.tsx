@@ -63,7 +63,7 @@ async function checkTx(hash: string): Promise<boolean> {
 
 }
 
-export default function Home({ data }: { data: object }) {
+export default function Home({ data }: { data: any }) {
   const [destAddr, setDestAddr] = useState("");
   const [nonce, setNonce] = useState("");
   const [balance, setBalance] = useState("");
